@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35514.174 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QLRCP_GUI", "QLRCP_GUI\QLRCP_GUI.csproj", "{9D8CDA8E-F4FF-40E3-8D5F-60F160B7BD29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QLRCP-DAL", "QLRCP-DAL\QLRCP-DAL.csproj", "{AD1C0A24-C5AF-498B-B815-4AE3E72F3AAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QLRCP_BUS", "QLRCP_BUS\QLRCP_BUS.csproj", "{3B15185D-22B9-430F-9C41-F69693982691}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9D8CDA8E-F4FF-40E3-8D5F-60F160B7BD29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D8CDA8E-F4FF-40E3-8D5F-60F160B7BD29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D8CDA8E-F4FF-40E3-8D5F-60F160B7BD29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D8CDA8E-F4FF-40E3-8D5F-60F160B7BD29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD1C0A24-C5AF-498B-B815-4AE3E72F3AAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD1C0A24-C5AF-498B-B815-4AE3E72F3AAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD1C0A24-C5AF-498B-B815-4AE3E72F3AAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD1C0A24-C5AF-498B-B815-4AE3E72F3AAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B15185D-22B9-430F-9C41-F69693982691}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B15185D-22B9-430F-9C41-F69693982691}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B15185D-22B9-430F-9C41-F69693982691}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B15185D-22B9-430F-9C41-F69693982691}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
