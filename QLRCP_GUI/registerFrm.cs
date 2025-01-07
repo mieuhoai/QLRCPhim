@@ -58,7 +58,9 @@ namespace QLRCP_GUI
             if (userService.AddUser(newUser))
             {
                 MessageBox.Show("Dang Ky Thanh Cong.", "Thanh Cong", MessageBoxButtons.OK, MessageBoxIcon.Information);
-               
+                Login loginForm = new Login();
+                loginForm.Show();
+                this.Hide();
             }
             else
             {
