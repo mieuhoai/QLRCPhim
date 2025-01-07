@@ -13,7 +13,7 @@ namespace QLRCP_DAL.Repos
         IEnumerable<buy_tickets> GetAllTickets();
         buy_tickets GetTicketById(int id);
         IEnumerable<buy_tickets> GetTicketsByMovie(string movieId);
-        void AddTicket(buy_tickets ticket);
+        void AddBuyTicket(buy_tickets ticket, int userId);
         void UpdateTicket(buy_tickets ticket);
         void DeleteTicket(int id);
         bool IsSeatAvailable(string movieId, int seatNumber);

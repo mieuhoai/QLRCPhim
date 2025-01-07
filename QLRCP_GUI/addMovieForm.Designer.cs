@@ -31,17 +31,11 @@ namespace QLRCP_GUI
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btn_hidepanel1 = new System.Windows.Forms.Button();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
             this.btn_back = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.btn_hidepanel2 = new System.Windows.Forms.Button();
             this.addmovie_status = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btn_deletemovie = new System.Windows.Forms.Button();
@@ -49,6 +43,7 @@ namespace QLRCP_GUI
             this.btn_addmovie = new System.Windows.Forms.Button();
             this.btn_import = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.addmovie_genre = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -58,71 +53,34 @@ namespace QLRCP_GUI
             this.label2 = new System.Windows.Forms.Label();
             this.addmovie_id = new System.Windows.Forms.TextBox();
             this.addmovie_capacity = new System.Windows.Forms.TextBox();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.btn_hidepanel1);
-            this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(759, 422);
-            this.panel1.TabIndex = 4;
-            // 
-            // btn_hidepanel1
-            // 
-            this.btn_hidepanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(19)))), ((int)(((byte)(33)))));
-            this.btn_hidepanel1.FlatAppearance.BorderSize = 0;
-            this.btn_hidepanel1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_hidepanel1.ForeColor = System.Drawing.Color.White;
-            this.btn_hidepanel1.Location = new System.Drawing.Point(129, 23);
-            this.btn_hidepanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn_hidepanel1.Name = "btn_hidepanel1";
-            this.btn_hidepanel1.Size = new System.Drawing.Size(83, 23);
-            this.btn_hidepanel1.TabIndex = 47;
-            this.btn_hidepanel1.Text = "Thêm phim";
-            this.btn_hidepanel1.UseVisualStyleBackColor = false;
-            this.btn_hidepanel1.Click += new System.EventHandler(this.btn_hidepanel1_Click);
             // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(19)))), ((int)(((byte)(33)))));
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(19)))), ((int)(((byte)(33)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 48);
+            this.dataGridView1.Location = new System.Drawing.Point(408, 72);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(756, 371);
+            this.dataGridView1.Size = new System.Drawing.Size(453, 347);
             this.dataGridView1.TabIndex = 3;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(19)))), ((int)(((byte)(33)))));
-            this.label1.Location = new System.Drawing.Point(3, 30);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 17);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "List movie";
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // btn_back
             // 
@@ -143,11 +101,8 @@ namespace QLRCP_GUI
             // 
             this.panel2.BackColor = System.Drawing.Color.Snow;
             this.panel2.Controls.Add(this.btn_back);
-            this.panel2.Controls.Add(this.panel1);
+            this.panel2.Controls.Add(this.dataGridView1);
             this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Controls.Add(this.pictureBox2);
-            this.panel2.Controls.Add(this.btn_hidepanel2);
             this.panel2.Controls.Add(this.addmovie_status);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.btn_deletemovie);
@@ -166,7 +121,7 @@ namespace QLRCP_GUI
             this.panel2.Controls.Add(this.addmovie_capacity);
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(759, 422);
+            this.panel2.Size = new System.Drawing.Size(861, 422);
             this.panel2.TabIndex = 5;
             // 
             // label7
@@ -181,48 +136,14 @@ namespace QLRCP_GUI
             this.label7.TabIndex = 48;
             this.label7.Text = "So Luong";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(346, 72);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(305, 178);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(346, 72);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(305, 178);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
-            // 
-            // btn_hidepanel2
-            // 
-            this.btn_hidepanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(19)))), ((int)(((byte)(33)))));
-            this.btn_hidepanel2.FlatAppearance.BorderSize = 0;
-            this.btn_hidepanel2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_hidepanel2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.btn_hidepanel2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btn_hidepanel2.Location = new System.Drawing.Point(13, 28);
-            this.btn_hidepanel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn_hidepanel2.Name = "btn_hidepanel2";
-            this.btn_hidepanel2.Size = new System.Drawing.Size(122, 24);
-            this.btn_hidepanel2.TabIndex = 47;
-            this.btn_hidepanel2.Text = "Danh sách phim";
-            this.btn_hidepanel2.UseVisualStyleBackColor = false;
-            this.btn_hidepanel2.Click += new System.EventHandler(this.btn_hidepanel2_Click);
-            // 
             // addmovie_status
             // 
             this.addmovie_status.FormattingEnabled = true;
             this.addmovie_status.Items.AddRange(new object[] {
             "Chon",
             "Co san",
-            "Khong co san ",
-            "da xoa"});
+            "Het",
+            "Deleted"});
             this.addmovie_status.Location = new System.Drawing.Point(153, 203);
             this.addmovie_status.Name = "addmovie_status";
             this.addmovie_status.Size = new System.Drawing.Size(101, 21);
@@ -283,6 +204,7 @@ namespace QLRCP_GUI
             this.btn_addmovie.TabIndex = 41;
             this.btn_addmovie.Text = "add";
             this.btn_addmovie.UseVisualStyleBackColor = false;
+            this.btn_addmovie.Click += new System.EventHandler(this.btn_addmovie_Click);
             // 
             // btn_import
             // 
@@ -291,7 +213,7 @@ namespace QLRCP_GUI
             this.btn_import.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_import.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_import.ForeColor = System.Drawing.Color.White;
-            this.btn_import.Location = new System.Drawing.Point(346, 275);
+            this.btn_import.Location = new System.Drawing.Point(301, 365);
             this.btn_import.Name = "btn_import";
             this.btn_import.Size = new System.Drawing.Size(66, 23);
             this.btn_import.TabIndex = 40;
@@ -302,10 +224,20 @@ namespace QLRCP_GUI
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.Control;
-            this.panel3.Location = new System.Drawing.Point(346, 72);
+            this.panel3.Controls.Add(this.pictureBox1);
+            this.panel3.Location = new System.Drawing.Point(260, 181);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(305, 178);
+            this.panel3.Size = new System.Drawing.Size(142, 178);
             this.panel3.TabIndex = 39;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(142, 178);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // label5
             // 
@@ -409,26 +341,21 @@ namespace QLRCP_GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(760, 420);
+            this.ClientSize = new System.Drawing.Size(862, 420);
             this.Controls.Add(this.panel2);
             this.Name = "addMovieForm";
             this.Text = "addMovieForm";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private Panel panel1;
         private DataGridView dataGridView1;
-        private Label label1;
         private Panel panel2;
         private ComboBox addmovie_status;
         private Label label6;
@@ -447,9 +374,6 @@ namespace QLRCP_GUI
         private Label label2;
         private TextBox addmovie_id;
         private Button btn_back;
-        private PictureBox pictureBox2;
-        private Button btn_hidepanel1;
-        private Button btn_hidepanel2;
         private TextBox addmovie_capacity;
         private Label label7;
     }

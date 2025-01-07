@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using QLRCP_DAL.Models;
@@ -30,7 +32,23 @@ namespace QLRCP_DAL.Repos
                 Context.SaveChanges();
             }
         }
+        public IEnumerable<buy_tickets> GetUserTickets(int userId)
+        {
+            try
+            {
+                // Lấy danh sách vé của người dùng từ bảng buy_tickets
+                var userTickets = Context.buy_tickets
+                    .Where(t => t.user_id == userId)  // Lọc theo userId
+                    .ToList();
 
+                return userTickets;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Lỗi khi lấy danh sách vé của người dùng: {ex.Message}");
+                throw;
+            }
+        }
         public bool ValidateUser(string username, string password)
         {
             return Context.users.Any(u =>u.username == username &&u.password == password &&u.status != "Deleted"
@@ -54,8 +72,23 @@ namespace QLRCP_DAL.Repos
 
         public void AddUser(user user)
         {
-            Context.users.Add(user);
-            Context.SaveChanges();
+            try
+            {
+                // Kiểm tra xem user có hợp lệ hay không (ví dụ: username không null)
+                if (user == null || string.IsNullOrEmpty(user.username) || string.IsNullOrEmpty(user.password))
+                {
+                    throw new ArgumentException("Thông tin người dùng không hợp lệ.");
+                }
+
+                // Thêm user vào cơ sở dữ liệu
+                Context.users.Add(user);
+                Context.SaveChanges(); // Lưu thay đổi vào cơ sở dữ liệu
+            }
+            catch (Exception ex)
+            {
+                // Nếu có lỗi, ném lỗi chi tiết ra ngoài
+                throw new Exception("Lỗi khi lưu người dùng vào cơ sở dữ liệu: " + ex.Message, ex);
+            }
         }
 
         public void UpdateUser(user user)

@@ -31,7 +31,6 @@ namespace QLRCP_GUI
         /// </summary>
         private void InitializeComponent()
         {
-            this.btn_logout = new System.Windows.Forms.Button();
             this.btn_mangestaff = new System.Windows.Forms.Button();
             this.btn_dashbroad = new System.Windows.Forms.Button();
             this.btn_managemovie = new System.Windows.Forms.Button();
@@ -39,24 +38,11 @@ namespace QLRCP_GUI
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btn_logout = new System.Windows.Forms.Button();
             this.btn_managecus = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btn_logout
-            // 
-            this.btn_logout.BackColor = System.Drawing.SystemColors.Desktop;
-            this.btn_logout.FlatAppearance.BorderSize = 0;
-            this.btn_logout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_logout.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
-            this.btn_logout.ForeColor = System.Drawing.Color.White;
-            this.btn_logout.Location = new System.Drawing.Point(3, 311);
-            this.btn_logout.Name = "btn_logout";
-            this.btn_logout.Size = new System.Drawing.Size(157, 35);
-            this.btn_logout.TabIndex = 7;
-            this.btn_logout.Text = "Logout";
-            this.btn_logout.UseVisualStyleBackColor = false;
             // 
             // btn_mangestaff
             // 
@@ -142,15 +128,30 @@ namespace QLRCP_GUI
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.btn_logout);
             this.panel3.Controls.Add(this.btn_managecus);
             this.panel3.Controls.Add(this.btn_managemovie);
-            this.panel3.Controls.Add(this.btn_logout);
             this.panel3.Controls.Add(this.btn_dashbroad);
             this.panel3.Controls.Add(this.btn_mangestaff);
             this.panel3.Location = new System.Drawing.Point(0, 32);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(691, 363);
             this.panel3.TabIndex = 33;
+            // 
+            // btn_logout
+            // 
+            this.btn_logout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(19)))), ((int)(((byte)(33)))));
+            this.btn_logout.FlatAppearance.BorderSize = 0;
+            this.btn_logout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_logout.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
+            this.btn_logout.ForeColor = System.Drawing.Color.White;
+            this.btn_logout.Location = new System.Drawing.Point(0, 325);
+            this.btn_logout.Name = "btn_logout";
+            this.btn_logout.Size = new System.Drawing.Size(163, 35);
+            this.btn_logout.TabIndex = 35;
+            this.btn_logout.Text = "Logout";
+            this.btn_logout.UseVisualStyleBackColor = false;
+            this.btn_logout.Click += new System.EventHandler(this.btn_logout_Click);
             // 
             // btn_managecus
             // 
@@ -192,9 +193,9 @@ namespace QLRCP_GUI
         private Button btn_close_log;
         private Label label1;
         private Panel panel2;
-        private Button btn_logout;
         private Panel panel3;
 
         private Button btn_managecus;
+        private Button btn_logout;
     }
 }

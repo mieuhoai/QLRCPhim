@@ -91,11 +91,7 @@ namespace QLRCP_DAL.Repos
                 .ToList();
         }
 
-        public void AddTicket(buy_tickets ticket)
-        {
-            Context.buy_tickets.Add(ticket);
-            Context.SaveChanges();
-        }
+        
 
         public void UpdateTicket(buy_tickets ticket)
         {
@@ -106,5 +102,35 @@ namespace QLRCP_DAL.Repos
                 Context.SaveChanges();
             }
         }
+        public buy_tickets GetTicketBySeatAndMovie(string movieId, int seatNumber)
+        {
+            return Context.buy_tickets
+                .FirstOrDefault(t => t.movie_id == movieId &&
+                                   t.seat_number == seatNumber);
+        }
+
+        public void AddBuyTicket(buy_tickets ticket,int userId)
+        {
+            try
+            {
+                // Gán user_id vào vé
+                ticket.user_id = userId;
+
+                // Thêm thông tin vé vào bảng buy_tickets
+                Context.buy_tickets.Add(ticket);
+
+                // Lưu thay đổi vào cơ sở dữ liệu
+                Context.SaveChanges();
+
+                Console.WriteLine($"Vé được thêm thành công: movie_id={ticket.movie_id}, seat_number={ticket.seat_number}");
+            }
+            catch (Exception ex)
+            {
+                // Ghi log lỗi nếu có vấn đề xảy ra
+                Console.WriteLine($"Lỗi khi thêm vé: {ex.Message}");
+                throw; // Ném lại ngoại lệ để lớp gọi xử lý
+            }
+        }
+        
     }
 }

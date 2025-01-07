@@ -27,8 +27,8 @@ namespace QLRCP_GUI
         {
             string username = log_username.Text.Trim();
             string password = log_passwd.Text.Trim();
-
-            if (userService.ValidateLogin(username, password))
+            string hashedPassword = PasswordHelper.HashPassword(password);
+            if (userService.ValidateLogin(username, hashedPassword))
             {
                 var user = userService.GetAllUsers().Find(u => u.username == username);
 
@@ -39,10 +39,19 @@ namespace QLRCP_GUI
                         AdminForm adForm = new AdminForm();
                         adForm.Show();
                     }
-                    else
+                    else if (user.role == "Staff")
                     {
+                        AdminForm adForm = new AdminForm();
+                        adForm.Show();
+                    }
+                    else 
+                    {
+
                         UserForm usrForm = new UserForm();
                         usrForm.Show();
+                        // Khi người dùng đăng nhập
+                        UserSession.CurrentUserId = user.id; // userId là giá trị lấy từ quá trình đăng nhập
+
                     }
 
                     this.Hide();
@@ -65,5 +74,15 @@ namespace QLRCP_GUI
         {
             log_passwd.PasswordChar = log_showpass.Checked ? '\0' : '*';
         }
+        public bool ValidateLogin(string username, string password)
+        {
+            var user = userService.GetAllUsers().FirstOrDefault(u => u.username == username);
+            if (user == null)
+                return false;
+
+            // Kiểm tra mật khẩu đã nhập có khớp với mật khẩu đã mã hóa trong cơ sở dữ liệu
+            return PasswordHelper.VerifyPassword(password, user.password);
+        }
+
     }
 }

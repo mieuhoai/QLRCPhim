@@ -37,22 +37,33 @@ namespace QLRCP_BUS.Services
 
         public bool AddUser(user userDto)
         {
-            if (userRepository.GetUserByUsername(userDto.username) != null)
+            try
             {
-                return false;
+                // Kiểm tra nếu tên người dùng đã tồn tại
+                if (userRepository.GetUserByUsername(userDto.username) != null)
+                {
+                    return false; // Tên người dùng đã tồn tại
+                }
+
+                // Tạo đối tượng user mới
+                var newUser = new user
+                {
+                    username = userDto.username,
+                    password = userDto.password,
+                    role = userDto.role,
+                    status = userDto.status,
+                    date_reg = DateTime.Now
+                };
+
+                // Thêm người dùng vào cơ sở dữ liệu
+                userRepository.AddUser(newUser);
+                return true;
             }
-
-            var users = new user
+            catch (Exception ex)
             {
-                username = userDto.username,
-                password = userDto.password,
-                role = userDto.role,
-                status = userDto.status,
-                date_reg = DateTime.Now
-            };
-
-            userRepository.AddUser(users);
-            return true;
+                // Ghi lại chi tiết lỗi
+                throw new Exception("Lỗi khi thêm người dùng: " + ex.Message, ex);
+            }
         }
 
         public bool UpdateUser(user userDto)
@@ -95,5 +106,15 @@ namespace QLRCP_BUS.Services
                 date_reg = User.date_reg,
             };
         }
+        public List<user> GetUserFilms()
+        {
+            var staffUsers = userRepository.GetUsersByRole("staff");
+            return staffUsers.Select(MapTo).ToList();
+        }
+        public int GetCurrentUserId()
+        {
+            return UserSession.CurrentUserId;
+        }
+
     }
 }

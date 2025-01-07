@@ -75,6 +75,7 @@ namespace QLRCP_GUI
             this.btn_backListStaff.TabIndex = 43;
             this.btn_backListStaff.Text = "<--";
             this.btn_backListStaff.UseVisualStyleBackColor = false;
+            this.btn_backListStaff.Click += new System.EventHandler(this.btn_backListStaff_Click);
             // 
             // label1
             // 
@@ -107,6 +108,7 @@ namespace QLRCP_GUI
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.Size = new System.Drawing.Size(426, 340);
             this.dataGridView2.TabIndex = 4;
+            this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             // 
             // label3
             // 
@@ -114,11 +116,12 @@ namespace QLRCP_GUI
             this.label3.BackColor = System.Drawing.Color.White;
             this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(19)))), ((int)(((byte)(33)))));
-            this.label3.Location = new System.Drawing.Point(10, 50);
+            this.label3.Location = new System.Drawing.Point(12, 48);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(70, 17);
             this.label3.TabIndex = 5;
             this.label3.Text = "List staff";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -171,8 +174,9 @@ namespace QLRCP_GUI
             // 
             this.cb_status_addstaff.FormattingEnabled = true;
             this.cb_status_addstaff.Items.AddRange(new object[] {
-            "dang lam",
-            "nghi"});
+            "active",
+            "inactive",
+            "Deleted"});
             this.cb_status_addstaff.Location = new System.Drawing.Point(29, 148);
             this.cb_status_addstaff.Name = "cb_status_addstaff";
             this.cb_status_addstaff.Size = new System.Drawing.Size(104, 24);
@@ -211,6 +215,7 @@ namespace QLRCP_GUI
             this.btn_deletestaff.TabIndex = 44;
             this.btn_deletestaff.Text = "delete";
             this.btn_deletestaff.UseVisualStyleBackColor = false;
+            this.btn_deletestaff.Click += new System.EventHandler(this.btn_deletestaff_Click);
             // 
             // btn_upstaff
             // 
@@ -225,6 +230,7 @@ namespace QLRCP_GUI
             this.btn_upstaff.TabIndex = 43;
             this.btn_upstaff.Text = "update";
             this.btn_upstaff.UseVisualStyleBackColor = false;
+            this.btn_upstaff.Click += new System.EventHandler(this.btn_upstaff_Click);
             // 
             // btn_addstaff
             // 
@@ -239,6 +245,7 @@ namespace QLRCP_GUI
             this.btn_addstaff.TabIndex = 42;
             this.btn_addstaff.Text = "add";
             this.btn_addstaff.UseVisualStyleBackColor = false;
+            this.btn_addstaff.Click += new System.EventHandler(this.btn_addstaff_Click);
             // 
             // addStaff
             // 

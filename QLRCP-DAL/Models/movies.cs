@@ -5,7 +5,6 @@ namespace QLRCP_DAL.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
-    using System.Net.Sockets;
 
     public partial class movies
     {
@@ -39,6 +38,5 @@ namespace QLRCP_DAL.Models
         public DateTime? update_date { get; set; }
 
         public DateTime? delete_date { get; set; }
-        public virtual ICollection<buy_tickets> Tickets { get; set; }
     }
 }

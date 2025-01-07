@@ -27,7 +27,7 @@ namespace QLRCP_GUI
             string username = reg_username.Text.Trim();
             string password = reg_passwd.Text.Trim();
             string confirmPassword = reg_cpasswd.Text.Trim();
-
+            string hashedPassword = PasswordHelper.HashPassword(password);
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(confirmPassword))
             {
                 MessageBox.Show("Vui long dien vao o trong", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -49,8 +49,8 @@ namespace QLRCP_GUI
             var newUser = new user
             {
                 username = username,
-                password = password,
-                role = "menber", // Default role is "user"
+                password = hashedPassword,
+                role = "Admin", // Default role is "user"
                 status = "Active",
                 date_reg = DateTime.Now
             };
@@ -58,7 +58,7 @@ namespace QLRCP_GUI
             if (userService.AddUser(newUser))
             {
                 MessageBox.Show("Dang Ky Thanh Cong.", "Thanh Cong", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+               
             }
             else
             {
@@ -70,6 +70,13 @@ namespace QLRCP_GUI
         {
                reg_passwd.PasswordChar = reg_showpass.Checked ? '\0' : '*';
             reg_cpasswd.PasswordChar = reg_showpass.Checked ? '\0' : '*';
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Login loginForm = new Login();
+            loginForm.Show();
+            this.Hide();
         }
     }
 }

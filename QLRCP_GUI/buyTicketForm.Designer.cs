@@ -31,7 +31,7 @@ namespace QLRCP_GUI
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btn_backListStaff = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -83,6 +83,7 @@ namespace QLRCP_GUI
             this.btn_backListStaff.TabIndex = 44;
             this.btn_backListStaff.Text = "<--";
             this.btn_backListStaff.UseVisualStyleBackColor = false;
+            this.btn_backListStaff.Click += new System.EventHandler(this.btn_backListStaff_Click);
             // 
             // label1
             // 
@@ -114,14 +115,14 @@ namespace QLRCP_GUI
             // 
             this.dataGridView3.AllowUserToAddRows = false;
             this.dataGridView3.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(19)))), ((int)(((byte)(33)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView3.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(19)))), ((int)(((byte)(33)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView3.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView3.EnableHeadersVisualStyles = false;
             this.dataGridView3.Location = new System.Drawing.Point(8, 51);
@@ -130,6 +131,7 @@ namespace QLRCP_GUI
             this.dataGridView3.RowHeadersWidth = 51;
             this.dataGridView3.Size = new System.Drawing.Size(668, 150);
             this.dataGridView3.TabIndex = 35;
+            this.dataGridView3.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellClick);
             // 
             // label2
             // 
@@ -188,6 +190,7 @@ namespace QLRCP_GUI
             this.btn_selectMovie.TabIndex = 43;
             this.btn_selectMovie.Text = "Chon ";
             this.btn_selectMovie.UseVisualStyleBackColor = false;
+            this.btn_selectMovie.Click += new System.EventHandler(this.btn_selectMovie_Click);
             // 
             // buyTicket_moviePrice
             // 
@@ -195,7 +198,7 @@ namespace QLRCP_GUI
             this.buyTicket_moviePrice.BackColor = System.Drawing.Color.White;
             this.buyTicket_moviePrice.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buyTicket_moviePrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(19)))), ((int)(((byte)(33)))));
-            this.buyTicket_moviePrice.Location = new System.Drawing.Point(243, 149);
+            this.buyTicket_moviePrice.Location = new System.Drawing.Point(244, 149);
             this.buyTicket_moviePrice.Name = "buyTicket_moviePrice";
             this.buyTicket_moviePrice.Size = new System.Drawing.Size(40, 17);
             this.buyTicket_moviePrice.TabIndex = 42;
@@ -219,7 +222,7 @@ namespace QLRCP_GUI
             this.buyTicket_movieGenre.BackColor = System.Drawing.Color.White;
             this.buyTicket_movieGenre.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buyTicket_movieGenre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(19)))), ((int)(((byte)(33)))));
-            this.buyTicket_movieGenre.Location = new System.Drawing.Point(274, 114);
+            this.buyTicket_movieGenre.Location = new System.Drawing.Point(290, 114);
             this.buyTicket_movieGenre.Name = "buyTicket_movieGenre";
             this.buyTicket_movieGenre.Size = new System.Drawing.Size(40, 17);
             this.buyTicket_movieGenre.TabIndex = 40;
@@ -243,7 +246,7 @@ namespace QLRCP_GUI
             this.buyTicket_movieName.BackColor = System.Drawing.Color.White;
             this.buyTicket_movieName.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buyTicket_movieName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(19)))), ((int)(((byte)(33)))));
-            this.buyTicket_movieName.Location = new System.Drawing.Point(297, 77);
+            this.buyTicket_movieName.Location = new System.Drawing.Point(316, 77);
             this.buyTicket_movieName.Name = "buyTicket_movieName";
             this.buyTicket_movieName.Size = new System.Drawing.Size(40, 17);
             this.buyTicket_movieName.TabIndex = 36;
@@ -267,7 +270,7 @@ namespace QLRCP_GUI
             this.buyTicket_movieID.BackColor = System.Drawing.Color.White;
             this.buyTicket_movieID.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buyTicket_movieID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(19)))), ((int)(((byte)(33)))));
-            this.buyTicket_movieID.Location = new System.Drawing.Point(274, 35);
+            this.buyTicket_movieID.Location = new System.Drawing.Point(290, 35);
             this.buyTicket_movieID.Name = "buyTicket_movieID";
             this.buyTicket_movieID.Size = new System.Drawing.Size(40, 17);
             this.buyTicket_movieID.TabIndex = 34;
@@ -315,7 +318,6 @@ namespace QLRCP_GUI
             this.Controls.Add(this.panel2);
             this.Name = "buyTicketForm";
             this.Text = "buyTicketForm";
-         
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();

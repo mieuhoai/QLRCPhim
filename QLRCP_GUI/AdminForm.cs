@@ -37,7 +37,9 @@ namespace QLRCP_GUI
 
         private void btn_dashbroad_Click(object sender, EventArgs e)
         {
-
+            dashBroadFrm dbform = new dashBroadFrm();
+            dbform.Show();
+            this.Hide();
         }
 
         private void btn_mangestaff_Click(object sender, EventArgs e)
@@ -45,6 +47,16 @@ namespace QLRCP_GUI
             addStaff staffrm = new addStaff(userService);
             staffrm.Show();
             this.Hide();
+        }
+
+        private void btn_logout_Click(object sender, EventArgs e)
+        {
+            if (DialogResult.Yes == MessageBox.Show("ban co chac chan muon dang xuat khong", "xac nhan", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+            {
+                Login loginform = new Login();
+                loginform.Show();
+                this.Hide();
+            }
         }
     }
 }

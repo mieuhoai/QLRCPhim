@@ -48,14 +48,20 @@ namespace QLRCP_DAL.Repos
             Context.SaveChanges();
         }
 
+       
+
+        
+
         public void UpdateMovie(movies movie)
         {
-            var existingMovie = Context.movies.Find(movie.id);
-            if (existingMovie != null)
+            var movieUpdate = Context.movies.Find(movie.id);
+            if (movieUpdate != null)
             {
-                Context.Entry(existingMovie).CurrentValues.SetValues(movie);
+                Context.Entry(movieUpdate).CurrentValues.SetValues(movie);
                 Context.SaveChanges();
             }
+           
+
         }
     }
 }

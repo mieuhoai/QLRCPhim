@@ -20,6 +20,7 @@ namespace QLRCP_GUI
     {
         private readonly MovieService movieServices;
         private string currentImagePath;
+       
         public addMovieForm(MovieService movieService)
         {
             InitializeComponent();
@@ -50,56 +51,11 @@ namespace QLRCP_GUI
             pictureBox1.Image = null;
             currentImagePath = null;
         }
-        private void btn_addmovie_Click(object sender, EventArgs e)
-        {
-            string movieId = .Text.Trim();
-            string movieName = txtMovieName.Text.Trim();
-            string genre = txtGenre.Text.Trim();
-            decimal price;
-            int capacity;
-            string status = cboStatus.SelectedItem != null ? cboStatus.SelectedItem.ToString() : "Không xác định";
-            string imagePath = txtImagePath.Text.Trim();
-
-            // Kiểm tra dữ liệu đầu vào
-            if (string.IsNullOrWhiteSpace(movieId) || string.IsNullOrWhiteSpace(movieName) ||
-                string.IsNullOrWhiteSpace(genre) || string.IsNullOrWhiteSpace(status) ||
-                !decimal.TryParse(txtPrice.Text.Trim(), out price) ||
-                !int.TryParse(txtCapacity.Text.Trim(), out capacity))
-            {
-                MessageBox.Show("Vui lòng nhập đầy đủ và chính xác các thông tin.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            var newMovie = new movies
-            {
-                movie_id = movieId,
-                movie_name = movieName,
-                genre = genre,
-                price = price,
-                capacity = capacity,
-                status = status,
-                movie_image = imagePath,
-                created_at = DateTime.Now
-            };
-
-            // Gọi hàm thêm phim
-            try
-            {
-                movieService.AddMovie(newMovie, imagePath);
-                MessageBox.Show("Thêm phim thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi khi thêm phim: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+        
 
         private void btn_hidepanel2_Click(object sender, EventArgs e)
         {
-            panel1.Visible = true;
-            panel2.Visible = false;
-            LoadMovies();
+            
         }
 
         private void btn_back_Click(object sender, EventArgs e)
@@ -113,39 +69,44 @@ namespace QLRCP_GUI
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(addmovie_id.Text))
+                string movieId = addmovie_id.Text.Trim();
+                string movieName = addmovie_name.Text.Trim();
+                string genre = addmovie_genre.Text.Trim();
+                decimal price = decimal.Parse(addmovie_price.Text.Trim());
+                int capacity = int.Parse(addmovie_capacity.Text.Trim());
+                string status = addmovie_status.SelectedItem != null ? addmovie_status.SelectedItem.ToString() : "Không xác định";
+                string imagePath = currentImagePath;
+
+                // Get the movie by ID
+                var movie = movieServices.GetMovieById(movieId);
+             
+                if (movie != null)
                 {
-                    MessageBox.Show("Vui lòng chọn phim cần cập nhật!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
+                    // Update the movie details
+                    movie.movie_name = movieName;
+                    movie.genre = genre;
+                    movie.price = price;
+                    movie.capacity = capacity;
+                    movie.status = status;
+                    movie.movie_image = imagePath; // Uncomment if using image path
+
+                    // Call the service to update the movie
+                    movieServices.UpdateMovie1(movie);
+
+                    MessageBox.Show("Cập nhật phim thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadMovies(); // Reload the movie list
+                    ClearFields(); // Clear the form fields
                 }
-
-                var movieDto = new movies
+                else
                 {
-                    movie_id = addmovie_id.Text.Trim(),
-                    movie_name = addmovie_name.Text.Trim(),
-                    genre = addmovie_genre.Text.Trim(),
-                    price = Convert.ToDecimal(addmovie_price.Text.Trim()),
-                    capacity = Convert.ToInt32(addmovie_capacity.Text.Trim()),
-                    status = addmovie_status.Text.Trim(),
-                    update_date = DateTime.Now
-                };
-
-                if (!string.IsNullOrEmpty(pictureBox1.ImageLocation) && pictureBox1.ImageLocation != currentImagePath)
-                {
-                    string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ds_movie", addmovie_id.Text.Trim() + ".jpg");
-                    File.Copy(pictureBox1.ImageLocation, path, true);
-                    movieDto.movie_image = path;
+                    MessageBox.Show("Phim không tồn tại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
-              //  movieServices.UpdateMovie(movieDto);
-                LoadMovies();
-                ClearFields();
-                MessageBox.Show("Cập nhật phim thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Lỗi khi cập nhật phim: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         private void btn_deletemovie_Click(object sender, EventArgs e)
@@ -163,15 +124,15 @@ namespace QLRCP_GUI
 
                 if (result == DialogResult.Yes)
                 {
-                 //   var movie = movieServices.GetMovieById(addmovie_id.Text.Trim());
-                //    if (movie != null)
-               //     {
-                  //      movieServices.DeleteMovie(movie.id);
+                    var movie = movieServices.GetMovieById(addmovie_id.Text.Trim());
+                    if (movie != null)
+                    {
+                        movieServices.DeleteMovie(movie.id);
                         LoadMovies();
                         ClearFields();
                         MessageBox.Show("Xóa phim thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-             //   }
+                }
             }
             catch (Exception ex)
             {
@@ -190,6 +151,7 @@ namespace QLRCP_GUI
 
                     if (openFileDialog.ShowDialog() == DialogResult.OK)
                     {
+
                         currentImagePath = openFileDialog.FileName;
                         pictureBox1.Image = Image.FromFile(currentImagePath);
                         pictureBox1.ImageLocation = currentImagePath;
@@ -204,9 +166,75 @@ namespace QLRCP_GUI
 
         private void btn_hidepanel1_Click(object sender, EventArgs e)
         {
-            panel1.Visible = false;
-            panel2.Visible = true;
-            ClearFields();
+            
+        }
+
+        private void btn_addmovie_Click(object sender, EventArgs e)
+        {
+            string movieId = addmovie_id.Text.Trim();
+            string movieName = addmovie_name.Text.Trim();
+            string genre = addmovie_genre.Text.Trim();
+            decimal price = decimal.Parse(addmovie_price.Text.Trim()); ;
+            int capacity = int.Parse(addmovie_capacity.Text.Trim());
+            string status = addmovie_status.SelectedItem != null ? addmovie_status.SelectedItem.ToString() : "Không xác định";
+            string imagePath = currentImagePath;
+
+            var newMovie = new movies
+            {
+                movie_id = movieId,
+                movie_name = movieName,
+                genre = genre,
+                price = price,
+                capacity = capacity,
+                status = status,
+                movie_image = imagePath,
+                created_at = DateTime.Now
+
+            };
+
+            // Gọi hàm thêm phim
+            try
+            {
+                
+                movieServices.AddMovie(newMovie, imagePath);
+                MessageBox.Show("Thêm phim thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadMovies();
+                ClearFields();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi thêm phim: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                addmovie_id.Text = row.Cells[1].Value.ToString();
+                addmovie_name.Text = row.Cells[2].Value.ToString();
+                addmovie_genre.Text = row.Cells[3].Value.ToString();
+                addmovie_price.Text = row.Cells[4].Value.ToString();
+                addmovie_capacity.Text = row.Cells[5].Value.ToString();
+                addmovie_status.Text = row.Cells[7]?.Value?.ToString() ?? string.Empty;
+
+                string imagePath = row.Cells[6].Value.ToString();
+                if (System.IO.File.Exists(imagePath))
+                {
+                    pictureBox1.Image = System.Drawing.Image.FromFile(imagePath);
+                }
+                else
+                {
+                    // Handle the case where the file does not exist
+                    pictureBox1.Image = null; // or set a default image
+                }
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
