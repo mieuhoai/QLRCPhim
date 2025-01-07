@@ -50,7 +50,7 @@ namespace QLRCP_GUI
             {
                 username = username,
                 password = hashedPassword,
-                role = "Admin", // Default role is "user"
+                role = "member", // Default role is "user"
                 status = "Active",
                 date_reg = DateTime.Now
             };

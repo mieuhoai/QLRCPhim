@@ -38,12 +38,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.log_rememberpass = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.log_rememberpass);
             this.panel1.Controls.Add(this.btn_reglink1);
             this.panel1.Controls.Add(this.btn_log);
             this.panel1.Controls.Add(this.log_showpass);
@@ -164,6 +166,19 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Login";
             // 
+            // log_rememberpass
+            // 
+            this.log_rememberpass.AutoSize = true;
+            this.log_rememberpass.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
+            this.log_rememberpass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(19)))), ((int)(((byte)(33)))));
+            this.log_rememberpass.Location = new System.Drawing.Point(141, 193);
+            this.log_rememberpass.Name = "log_rememberpass";
+            this.log_rememberpass.Size = new System.Drawing.Size(170, 24);
+            this.log_rememberpass.TabIndex = 10;
+            this.log_rememberpass.Text = "Remember Password";
+            this.log_rememberpass.UseVisualStyleBackColor = true;
+            this.log_rememberpass.CheckedChanged += new System.EventHandler(this.log_rememberpass_CheckedChanged);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -173,6 +188,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "Login";
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.Login_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -191,5 +207,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_reglink1;
+        private System.Windows.Forms.CheckBox log_rememberpass;
     }
 }

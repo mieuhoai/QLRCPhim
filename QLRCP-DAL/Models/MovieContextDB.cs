@@ -8,7 +8,7 @@ namespace QLRCP_DAL.Models
     public partial class MovieContextDB : DbContext
     {
         public MovieContextDB()
-            : base("name=MovieContextDB1")
+            : base("name=MovieContextDB")
         {
         }
 

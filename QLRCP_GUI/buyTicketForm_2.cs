@@ -19,7 +19,7 @@ namespace QLRCP_GUI
 
         private readonly MovieService movieServices;
         private readonly TicketService ticketServices;
-        private int selectedSeatNumber = 0; // Ghế được chọn
+        private readonly List<int> selectedSeats = new List<int>();
         private decimal totalPrice = 0;     // Tổng tiền
         private readonly string movieId;   // ID phim (truyền từ form trước)
         buy_tickets ticket = new buy_tickets();
@@ -49,16 +49,23 @@ namespace QLRCP_GUI
 
             if (btn != null) // Kiểm tra nút không null
             {
-                // Lấy số ghế từ Text của nút (giả sử ghế là dạng "G10", "G11", ...)
                 string seatText = btn.Text;
                 string seatNumberStr = new string(seatText.Where(char.IsDigit).ToArray());
 
                 if (int.TryParse(seatNumberStr, out int seatNumber))
                 {
-                    selectedSeatNumber = seatNumber;
-
-                    // Hiển thị thông báo cho người dùng
-                    MessageBox.Show($"Bạn đã chọn ghế: {btn.Text}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (selectedSeats.Contains(seatNumber))
+                    {
+                        // Nếu ghế đã chọn, gỡ bỏ khỏi danh sách và cập nhật giao diện
+                        selectedSeats.Remove(seatNumber);
+                        btn.BackColor = DefaultBackColor; // Trả lại màu mặc định
+                    }
+                    else
+                    {
+                        // Nếu ghế chưa chọn, thêm vào danh sách và cập nhật giao diện
+                        selectedSeats.Add(seatNumber);
+                        btn.BackColor = Color.LightBlue; // Đổi màu để đánh dấu đã chọn
+                    }
 
                     // Cập nhật tổng tiền sau khi chọn ghế
                     UpdateTotalPrice();
@@ -72,6 +79,7 @@ namespace QLRCP_GUI
         private void UpdateTotalPrice()
         {
             decimal foodPrice = 0, drinkPrice = 0, seatPrice = 0, moviePrice = 0;
+
             var movie = movieServices.GetMovieById(movieId);
             if (movie != null)
             {
@@ -82,6 +90,7 @@ namespace QLRCP_GUI
                 MessageBox.Show("Không tìm thấy bộ phim với mã này.");
                 return;
             }
+
             // Giá đồ ăn
             switch (cb_food.SelectedItem)
             {
@@ -99,43 +108,47 @@ namespace QLRCP_GUI
             }
 
             // Giá ghế dựa trên số ghế đã chọn
-            if (selectedSeatNumber >= 1 && selectedSeatNumber <= 16)
-                seatPrice = 50000;
-            else if (selectedSeatNumber >= 17 && selectedSeatNumber <= 32)
-                seatPrice = 70000;
-            else if (selectedSeatNumber >= 33 && selectedSeatNumber <= 50)
-                seatPrice = 90000;
+            foreach (var seatNumber in selectedSeats)
+            {
+                if (seatNumber >= 1 && seatNumber <= 16)
+                    seatPrice += 50000;
+                else if (seatNumber >= 17 && seatNumber <= 32)
+                    seatPrice += 70000;
+                else if (seatNumber >= 33 && seatNumber <= 50)
+                    seatPrice += 90000;
+            }
 
-            // Tổng tiền = giá ghế + giá đồ ăn + giá nước uống
+            // Tổng tiền = giá phim + giá ghế + giá đồ ăn + giá nước uống
             totalPrice = moviePrice + seatPrice + foodPrice + drinkPrice;
-            ticket.totalPrice = (int)totalPrice; // Update the correct property
+            ticket.totalPrice = (int)totalPrice; // Cập nhật tổng tiền vé
             txtThanhTien.Text = $"{totalPrice:C}";
-            
         }
 
         private void btn_buy_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(movieId) || selectedSeatNumber == 0)
+            if (string.IsNullOrEmpty(movieId) || selectedSeats.Count == 0)
             {
-                MessageBox.Show("Vui lòng chọn phim và ghế!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Vui lòng chọn phim và ít nhất một ghế!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            var ticket = new buy_tickets
-            {
-                movie_id = movieId,
-                seat_number = selectedSeatNumber,
-                totalPrice = (int)totalPrice,
-                purchase_date = DateTime.Now
-
-            };
-
-            // Giả sử bạn có một phương thức để lấy user_id (ví dụ từ session hoặc đối tượng đăng nhập)
-            int userId = UserSession.CurrentUserId;  // Hoặc từ đối tượng đăng nhập khác
+            int userId = UserSession.CurrentUserId; // Lấy ID người dùng (giả định)
 
             try
             {
-                ticketServices.AddBuyTicket_1(ticket, userId); // Gọi hàm thêm vé với user_id
+                foreach (var seatNumber in selectedSeats)
+                {
+                    var ticket = new buy_tickets
+                    {
+                        movie_id = movieId,
+                        seat_number = seatNumber,
+                        totalPrice = (int)(totalPrice / selectedSeats.Count), // Chia đều tổng tiền cho mỗi ghế
+                        purchase_date = DateTime.Now
+                    };
+
+                    ticketServices.AddBuyTicket_1(ticket, userId); // Thêm từng vé vào cơ sở dữ liệu
+                }
+
                 MessageBox.Show("Mua vé thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ClearSelections();
             }
@@ -152,7 +165,14 @@ namespace QLRCP_GUI
         }
         private void ClearSelections()
         {
-            selectedSeatNumber = 0;
+            selectedSeats.Clear();
+            foreach (Control control in button_Group.Controls)
+            {
+                if (control is Button button)
+                {
+                    button.BackColor = DefaultBackColor; // Trả lại màu mặc định
+                }
+            }
             cb_food.SelectedIndex = -1;
             cb_drink.SelectedIndex = -1;
             txtThanhTien.Text = "0";
@@ -161,12 +181,11 @@ namespace QLRCP_GUI
         private void btn_receipt_Click(object sender, EventArgs e)
         {
             string receipt = $"Phim: {movieId}\n" +
-                     $"Ghế: G{selectedSeatNumber}\n" +
+                     $"Ghế: {string.Join(", ", selectedSeats.Select(seat => $"G{seat}"))}\n" +
                      $"Tổng tiền: {totalPrice:C}\n" +
                      $"Ngày mua: {DateTime.Now:dd/MM/yyyy}";
             MessageBox.Show(receipt, "Biên Lai", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
         private void buyTicketForm_2_Load(object sender, EventArgs e)
         {
             foreach (Control control in button_Group.Controls)

@@ -34,19 +34,17 @@ namespace QLRCP_GUI
             this.btn_mangestaff = new System.Windows.Forms.Button();
             this.btn_dashbroad = new System.Windows.Forms.Button();
             this.btn_managemovie = new System.Windows.Forms.Button();
-            this.btn_close_log = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btn_logout = new System.Windows.Forms.Button();
-            this.btn_managecus = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_mangestaff
             // 
-            this.btn_mangestaff.BackColor = System.Drawing.SystemColors.Desktop;
+            this.btn_mangestaff.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(19)))), ((int)(((byte)(33)))));
             this.btn_mangestaff.FlatAppearance.BorderSize = 0;
             this.btn_mangestaff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_mangestaff.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
@@ -61,7 +59,7 @@ namespace QLRCP_GUI
             // 
             // btn_dashbroad
             // 
-            this.btn_dashbroad.BackColor = System.Drawing.SystemColors.Desktop;
+            this.btn_dashbroad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(19)))), ((int)(((byte)(33)))));
             this.btn_dashbroad.FlatAppearance.BorderSize = 0;
             this.btn_dashbroad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_dashbroad.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
@@ -76,7 +74,7 @@ namespace QLRCP_GUI
             // 
             // btn_managemovie
             // 
-            this.btn_managemovie.BackColor = System.Drawing.SystemColors.Desktop;
+            this.btn_managemovie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(19)))), ((int)(((byte)(33)))));
             this.btn_managemovie.FlatAppearance.BorderSize = 0;
             this.btn_managemovie.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_managemovie.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
@@ -88,21 +86,6 @@ namespace QLRCP_GUI
             this.btn_managemovie.Text = "Quản lý phim";
             this.btn_managemovie.UseVisualStyleBackColor = false;
             this.btn_managemovie.Click += new System.EventHandler(this.btn_managemovie_Click);
-            // 
-            // btn_close_log
-            // 
-            this.btn_close_log.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(19)))), ((int)(((byte)(33)))));
-            this.btn_close_log.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btn_close_log.FlatAppearance.BorderSize = 0;
-            this.btn_close_log.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_close_log.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_close_log.ForeColor = System.Drawing.Color.White;
-            this.btn_close_log.Location = new System.Drawing.Point(666, 0);
-            this.btn_close_log.Name = "btn_close_log";
-            this.btn_close_log.Size = new System.Drawing.Size(25, 32);
-            this.btn_close_log.TabIndex = 30;
-            this.btn_close_log.Text = "X";
-            this.btn_close_log.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
@@ -119,7 +102,6 @@ namespace QLRCP_GUI
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.btn_close_log);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
@@ -129,7 +111,6 @@ namespace QLRCP_GUI
             // panel3
             // 
             this.panel3.Controls.Add(this.btn_logout);
-            this.panel3.Controls.Add(this.btn_managecus);
             this.panel3.Controls.Add(this.btn_managemovie);
             this.panel3.Controls.Add(this.btn_dashbroad);
             this.panel3.Controls.Add(this.btn_mangestaff);
@@ -153,21 +134,6 @@ namespace QLRCP_GUI
             this.btn_logout.UseVisualStyleBackColor = false;
             this.btn_logout.Click += new System.EventHandler(this.btn_logout_Click);
             // 
-            // btn_managecus
-            // 
-            this.btn_managecus.BackColor = System.Drawing.SystemColors.Desktop;
-            this.btn_managecus.FlatAppearance.BorderSize = 0;
-            this.btn_managecus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_managecus.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
-            this.btn_managecus.ForeColor = System.Drawing.Color.White;
-            this.btn_managecus.Location = new System.Drawing.Point(267, 237);
-            this.btn_managecus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn_managecus.Name = "btn_managecus";
-            this.btn_managecus.Size = new System.Drawing.Size(157, 35);
-            this.btn_managecus.TabIndex = 8;
-            this.btn_managecus.Text = "Quản lý khách hàng";
-            this.btn_managecus.UseVisualStyleBackColor = false;
-            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -190,12 +156,9 @@ namespace QLRCP_GUI
         private Button button3;
         private Button btn_managemovie;
         private Button btn_mangestaff;
-        private Button btn_close_log;
         private Label label1;
         private Panel panel2;
         private Panel panel3;
-
-        private Button btn_managecus;
         private Button btn_logout;
     }
 }

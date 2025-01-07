@@ -78,6 +78,16 @@ namespace QLRCP_GUI
                 buyTicket_movieName.Text = row.Cells[2].Value.ToString();
                 buyTicket_movieGenre.Text = row.Cells[3].Value.ToString();
                 buyTicket_moviePrice.Text = row.Cells[4].Value.ToString();
+                string imagePath = row.Cells[6].Value.ToString();
+                if (System.IO.File.Exists(imagePath))
+                {
+                    pictureBox1.Image = System.Drawing.Image.FromFile(imagePath);
+                }
+                else
+                {
+                    // Handle the case where the file does not exist
+                    pictureBox1.Image = null; // or set a default image
+                }
             }
         }
 
