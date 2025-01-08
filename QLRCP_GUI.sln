@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35514.174 d17.12
+VisualStudioVersion = 17.12.35514.174
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QLRCP_GUI", "QLRCP_GUI\QLRCP_GUI.csproj", "{9D8CDA8E-F4FF-40E3-8D5F-60F160B7BD29}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QLRCP-DAL", "QLRCP-DAL\QLRCP-DAL.csproj", "{AD1C0A24-C5AF-498B-B815-4AE3E72F3AAF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QLRCP_BUS", "QLRCP_BUS\QLRCP_BUS.csproj", "{3B15185D-22B9-430F-9C41-F69693982691}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{8510E132-550B-4A36-BB5E-42957BEA70DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,8 @@ Global
 		{3B15185D-22B9-430F-9C41-F69693982691}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B15185D-22B9-430F-9C41-F69693982691}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B15185D-22B9-430F-9C41-F69693982691}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8510E132-550B-4A36-BB5E-42957BEA70DC}.Debug|Any CPU.ActiveCfg = Debug
+		{8510E132-550B-4A36-BB5E-42957BEA70DC}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
